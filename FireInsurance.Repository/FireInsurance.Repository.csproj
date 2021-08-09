@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FireInsurance.Core\FireInsurance.Core.csproj" />
+    <ProjectReference Include="..\FireInsurance.Data\FireInsurance.Data.csproj" />
+  </ItemGroup>
+
+</Project>
