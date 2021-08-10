@@ -19,13 +19,13 @@
 <body dir="rtl">
     <div class="col-md-12 row justify-content-center" ">
         <div class="col-md-2" style="text-align:right">
-            <img src="/img/TF-logo.png" style="width:250px" />
+            <img src="/img/TF-logo.png" style="width:250px" onclick="window.open('http://toofanfelez.com/')"/>
         </div>
         <div class="col-md-8" style="text-align:center">
             <img src="/img/Header-PNG-Image.png" style="width: 1300px;height: 200px;" />
         </div>
         <div class="col-md-2" style="text-align:left">
-            <img src="/img/unnamed.png" style="width:200px" />
+            <img src="/img/unnamed.png" style="width:200px" onclick="window.open('https://www.bimehma.com')"/>
 
         </div>
 
@@ -49,10 +49,14 @@
             <input type="text" asp-for="Birthdate" class="form-control datepicker" placeholder="تاریخ تولد">
             <input type="text" asp-for="PostalCode" class="form-control" placeholder="کد پستی منزل">
             <input type="password" asp-for="ProductId" class="form-control" placeholder="کد محصول">
+            <input type="password" asp-for="ProductId" class="form-control" placeholder="کد محصول">
+            <div style="text-align:right;">
+                <input type="checkbox" id="privacy">
+                <label for="privacy"> شرایط را مطالعه نموده و قبول دارم</label><br>
+            </div>
             <button class="btn-warning" type="submit" href="/">صدور بیمه نامه</button>
         </div>
     </form>
-
 </body>
 </html>
 
