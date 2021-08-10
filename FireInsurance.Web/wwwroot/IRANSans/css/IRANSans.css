@@ -1,0 +1,48 @@
+﻿/**
+*
+*	Name:			IRAN Sans-Serif Font
+*	Version:		4.0
+*	Author:			Moslem Ebrahimi (moslemebrahimi.com)
+*	Created on:		Dec 25, 2012
+*	Updated on:		Dec 12, 2015
+*	Website:		http://fontiran.com
+*	Copyright:		Commercial/Proprietary Software
+--------------------------------------------------------------------------------------
+فونت های ایران سن سریف یک نرم افزار مالکیتی محسوب می شود. جهت آگاهی از قوانین استفاده از این فونت ها لطفا به وب سایت (فونت ایران دات کام) مراجعه نمایید
+--------------------------------------------------------------------------------------
+IRAN Sans-serif fonts are considered a proprietary software. To gain information about the laws regarding the use of these fonts, please visit www.fontiran.com 
+--------------------------------------------------------------------------------------
+This set of fonts are used in this project under the license: (.....)
+--------------------------------------------------------------------------------------
+*	
+**/
+@font-face {
+  font-family: 'IRANSans';
+  font-style: bold;
+  font-weight: 700;
+  src: url(../fonts/IRANSans.eot);
+  src: url(../fonts/IRANSans.eot?#iefix) format('embedded-opentype'),
+       url(../fonts/IRANSans.woff2) format('woff2'),
+       url(../fonts/IRANSans.woff) format('woff'),
+       url(../fonts/IRANSans.ttf) format('truetype');
+}
+
+body{
+	font-family: IRANSans !important;
+}
+
+a {
+	font-family: IRANSans !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: IRANSans !important;
+}
+
+span {
+	font-family: IRANSans !important;
+}
+
+.popover, .tooltip {
+    font-family: IRANSans !important;
+}

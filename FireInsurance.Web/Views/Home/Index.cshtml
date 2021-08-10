@@ -2,53 +2,69 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<link href="~/css/site.css" rel="stylesheet" />
 
-<h4>Customer</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Index">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NationalCode" class="control-label"></label>
-                <input asp-for="NationalCode" class="form-control" />
-                <span asp-validation-for="NationalCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input asp-for="BirthDate" class="form-control" />
-                <span asp-validation-for="BirthDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PostalCode" class="control-label"></label>
-                <input asp-for="PostalCode" class="form-control" />
-                <span asp-validation-for="PostalCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Mobile" class="control-label"></label>
-                <input asp-for="Mobile" class="form-control" />
-                <span asp-validation-for="Mobile" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProductId" class="control-label"></label>
-                <input asp-for="ProductId" class="form-control" />
-                <span asp-validation-for="ProductId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>بیمه نامه آتشسوزی منزل مسکونی</title>
+    <link href="~/IRANSans/css/IRANSans.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/persianDatepicker-default.css" rel="stylesheet" />
+
+</head>
+<body dir="rtl">
+    <div class="col-md-12 row justify-content-center" ">
+        <div class="col-md-2" style="text-align:right">
+            <img src="/img/TF-logo.png" style="width:250px" />
+        </div>
+        <div class="col-md-8" style="text-align:center">
+            <img src="/img/Header-PNG-Image.png" style="width: 1300px;height: 200px;" />
+        </div>
+        <div class="col-md-2" style="text-align:left">
+            <img src="/img/unnamed.png" style="width:200px" />
+
+        </div>
+
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="col-md-12 " style="text-align:center;margin-top:100px">
+
+        <h4 class="page-title">جهت فعالسازی بیمه نامه آتشسوزی منزل مسکونی</h4>
+        <h4 class="page-title">(هدیه شرکت طوفان فلز)</h4>
+        <div style="margin-top:25px">
+
+            <h5>اطلاعات زیر را وارد نمایید</h5>
+
+
+        </div>
+    </div>
+    <form class="col-md-12 row justify-content-center" action="">
+        <div class="col-md-4 col-sm-4 info">
+            <input type="text" asp-for="NationalCode" class="form-control" placeholder="کد ملی">
+            <input type="text" asp-for="Mobile" class="form-control" placeholder="تلفن همراه">
+            <input type="text" asp-for="Birthdate" class="form-control datepicker" placeholder="تاریخ تولد">
+            <input type="text" asp-for="PostalCode" class="form-control" placeholder="کد پستی منزل">
+            <input type="password" asp-for="ProductId" class="form-control" placeholder="کد محصول">
+            <button class="btn-warning" type="submit" href="/">صدور بیمه نامه</button>
+        </div>
+    </form>
+
+</body>
+</html>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/persianDatepicker.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").persianDatepicker({
+                formatDate: 'YYYY/0M/0D', persianNumbers: !0
+            });
+        });
+    </script>
 }
+
