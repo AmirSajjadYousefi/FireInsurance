@@ -207,3 +207,12 @@ button {
     }
 }
 
+.input-span {
+    position: relative;
+    color: red;
+    text-align: right;
+    top: 0;
+    right: 0;
+    font-size: 13px;
+}
+

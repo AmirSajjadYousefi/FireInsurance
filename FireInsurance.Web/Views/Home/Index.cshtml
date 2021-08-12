@@ -1,11 +1,9 @@
-﻿@model FireInsurance.Data.Models.Customer
+﻿@model FireInsurance.Data.Models.FireInsuranceCustomer
 
 @{
-    ViewData["Title"] = "Index";
+    Layout = null;
 }
-
 <link href="~/css/site.css" rel="stylesheet" />
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,54 +12,72 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/css/persianDatepicker-default.css" rel="stylesheet" />
-
 </head>
 <body dir="rtl">
-    <div class="col-md-12 row justify-content-center" ">
-        <div class="col-md-2" style="text-align:right">
-            <img src="/img/TF-logo.png" style="width:250px" onclick="window.open('http://toofanfelez.com/')"/>
-        </div>
-        <div class="col-md-8" style="text-align:center">
-            <img src="/img/Header-PNG-Image.png" style="width: 1300px;height: 200px;" />
-        </div>
-        <div class="col-md-2" style="text-align:left">
-            <img src="/img/unnamed.png" style="width:200px" onclick="window.open('https://www.bimehma.com')"/>
-
-        </div>
-
-    </div>
-
-    <div class="col-md-12 " style="text-align:center;margin-top:100px">
-
-        <h4 class="page-title">جهت فعالسازی بیمه نامه آتشسوزی منزل مسکونی</h4>
-        <h4 class="page-title">(هدیه شرکت طوفان فلز)</h4>
-        <div style="margin-top:25px">
-
-            <h5>اطلاعات زیر را وارد نمایید</h5>
-
-
-        </div>
-    </div>
-    <form class="col-md-12 row justify-content-center" action="">
-        <div class="col-md-4 col-sm-4 info">
-            <input type="text" asp-for="NationalCode" class="form-control" placeholder="کد ملی">
-            <input type="text" asp-for="Mobile" class="form-control" placeholder="تلفن همراه">
-            <input type="text" asp-for="Birthdate" class="form-control datepicker" placeholder="تاریخ تولد">
-            <input type="text" asp-for="PostalCode" class="form-control" placeholder="کد پستی منزل">
-            <input type="password" asp-for="ProductId" class="form-control" placeholder="کد محصول">
-            <input type="password" asp-for="ProductId" class="form-control" placeholder="کد محصول">
-            <div style="text-align:right;">
-                <input type="checkbox" id="privacy">
-                <label for="privacy"> شرایط را مطالعه نموده و قبول دارم</label><br>
+    <div class="row">
+        <div class="col-md-12 row justify-content-center">
+            <div class="col-md-2" style="text-align:right">
+                <img src="/img/TF-logo.png" style="width:100%" onclick="window.open('http://toofanfelez.com/')" />
             </div>
-            <button class="btn-warning" type="submit" href="/">صدور بیمه نامه</button>
-        </div>
-    </form>
-</body>
-</html>
+            <div class="col-md-8">
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            </div>
+            <div class="col-md-2" style="text-align:left">
+                <img src="/img/unnamed.png" style="width:100%" onclick="window.open('https://www.bimehma.com')" />
+
+            </div>
+
+        </div>
+        <div class="col-md-12 " style="text-align:center;margin-top:100px">
+
+            <h4 class="page-title">جهت فعالسازی بیمه نامه آتشسوزی منزل مسکونی</h4>
+            <h4 class="page-title">(هدیه شرکت طوفان فلز)</h4>
+            <div style="margin-top:25px">
+
+                <h5>اطلاعات زیر را وارد نمایید</h5>
+
+
+            </div>
+        </div>
+        <form asp-action="Index" class="col-md-12 row justify-content-center">
+            <div class="col-md-4 col-sm-4 info">
+                <div>
+                    <input autocomplete="off" asp-for="NationalCode" class="form-control" placeholder="کد ملی" />
+                    <span asp-validation-for="NationalCode" class="input-span"></span>
+
+                </div>
+                <div>
+                    <input autocomplete="off" asp-for="Mobile" class="form-control" placeholder="تلفن همراه" />
+                    <span asp-validation-for="Mobile" class="input-span"></span>
+                </div>
+                <div>
+
+                    <input id="exampleInput3" autocomplete="off" asp-for="BirthDate" class="datepicker form-control" placeholder="تاریخ تولد" />
+                    <span asp-validation-for="BirthDate" class="input-span"></span>
+                </div>
+                <div>
+                    <input autocomplete="off" asp-for="PostalCode" class="form-control" placeholder="کد پستی" />
+                    <span asp-validation-for="PostalCode" class="input-span"></span>
+                </div>
+                <div>
+                    <input autocomplete="off" asp-for="ProductId" class="form-control" placeholder="کد محصول" />
+                    <span asp-validation-for="ProductId" class="input-span"></span>
+                </div>
+                <div style="text-align:right;">
+                    <input type="checkbox" id="privacy">
+                    <label for="privacy"> شرایط را مطالعه نموده و قبول دارم</label><br>
+                </div>
+                <button class="btn-warning" type="submit" href="/">صدور بیمه نامه</button>
+            </div>
+
+        </form>
+    </div>
+
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
     <script src="~/js/persianDatepicker.js"></script>
     <script>
         $(function () {
@@ -70,5 +86,5 @@
             });
         });
     </script>
-}
-
+</body>
+</html>
