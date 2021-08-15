@@ -4,6 +4,8 @@
     Layout = null;
 }
 <link href="~/css/site.css" rel="stylesheet" />
+<link href="~/css/persianDatepicker-default.css" rel="stylesheet" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,8 +51,9 @@
                 </div>
                 <div>
 
-                    <input id="exampleInput3" autocomplete="off" asp-for="BirthDate" class="form-control" placeholder="* تاریخ تولد" />
+                    <input autocomplete="off" asp-for="BirthDate" class="form-control datepicker" placeholder="* تاریخ تولد" />
                 </div>
+
                 <div>
                     <input autocomplete="off" asp-for="PostalCode" class="form-control" placeholder="* کد پستی" />
                 </div>
@@ -71,6 +74,14 @@
     }
     <script src="~/js/jquery.js"></script>
     <script src="~/js/SweetAlert.js"></script>
+    <script src="~/js/persianDatepicker.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").persianDatepicker({
+                formatDate: 'YYYY/0M/0D', persianNumbers: !0
+            });
+        });
+    </script>
     <script>
         $('#submit').click(function (evt) {
             evt.preventDefault();
