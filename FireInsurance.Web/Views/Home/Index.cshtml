@@ -11,7 +11,6 @@
     <link href="~/IRANSans/css/IRANSans.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link href="~/css/persianDatepicker-default.css" rel="stylesheet" />
 </head>
 <body dir="rtl">
     <div class="row">
@@ -39,52 +38,58 @@
 
             </div>
         </div>
-        <form asp-action="Index" class="col-md-12 row justify-content-center">
+        <form asp-action="Index" id="index" class="col-md-12 row justify-content-center">
             <div class="col-md-4 col-sm-4 info">
                 <div>
-                    <input autocomplete="off" asp-for="NationalCode" class="form-control" placeholder="کد ملی" />
-                    <span asp-validation-for="NationalCode" class="input-span"></span>
+                    <input autocomplete="off" asp-for="NationalCode" class="form-control" placeholder="* کد ملی" />
 
                 </div>
                 <div>
-                    <input autocomplete="off" asp-for="Mobile" class="form-control" placeholder="تلفن همراه" />
-                    <span asp-validation-for="Mobile" class="input-span"></span>
+                    <input autocomplete="off" asp-for="Mobile" class="form-control" placeholder="* تلفن همراه" />
                 </div>
                 <div>
 
-                    <input id="exampleInput3" autocomplete="off" asp-for="BirthDate" class="datepicker form-control" placeholder="تاریخ تولد" />
-                    <span asp-validation-for="BirthDate" class="input-span"></span>
+                    <input id="exampleInput3" autocomplete="off" asp-for="BirthDate" class="form-control" placeholder="* تاریخ تولد" />
                 </div>
                 <div>
-                    <input autocomplete="off" asp-for="PostalCode" class="form-control" placeholder="کد پستی" />
-                    <span asp-validation-for="PostalCode" class="input-span"></span>
+                    <input autocomplete="off" asp-for="PostalCode" class="form-control" placeholder="* کد پستی" />
                 </div>
                 <div>
-                    <input autocomplete="off" asp-for="ProductId" class="form-control" placeholder="کد محصول" />
-                    <span asp-validation-for="ProductId" class="input-span"></span>
+                    <input autocomplete="off" asp-for="ProductId" class="form-control" placeholder="* کد محصول" />
                 </div>
                 <div style="text-align:right;">
                     <input type="checkbox" id="privacy">
                     <label for="privacy"> شرایط را مطالعه نموده و قبول دارم</label><br>
                 </div>
-                <button class="btn-warning" type="submit" href="/">صدور بیمه نامه</button>
+                <button class="btn-warning" id="submit" href="/">صدور بیمه نامه</button>
             </div>
 
         </form>
     </div>
-
-
-
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
-    <script src="~/js/persianDatepicker.js"></script>
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/SweetAlert.js"></script>
     <script>
-        $(function () {
-            $(".datepicker").persianDatepicker({
-                formatDate: 'YYYY/0M/0D', persianNumbers: !0
+        $('#submit').click(function (evt) {
+            evt.preventDefault();
+            var form = $("#index");
+            var data = new FormData(this.form);
+            $.ajax({
+                url: "/Home/Index",
+                type: "POST",
+                data: data,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function (msg) {
+                    swal("", msg[1], msg[0]);
+
+                }
             });
         });
+
     </script>
 </body>
 </html>

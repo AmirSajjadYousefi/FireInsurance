@@ -11,6 +11,8 @@ namespace FireInsurance.Web.Controllers
     public class HomeController : Controller
     {
         private readonly IServiceWrapper _Service;
+        private string[] flag = new string[5];
+
         public HomeController(IServiceWrapper service)
         {
             _Service = service;
@@ -23,6 +25,12 @@ namespace FireInsurance.Web.Controllers
         [HttpPost]
         public IActionResult Index(FireInsuranceCustomer model)
         {
+            if (string.IsNullOrEmpty(model.BirthDate) || string.IsNullOrEmpty(model.Mobile) || string.IsNullOrEmpty(model.NationalCode) || string.IsNullOrEmpty(model.PostalCode) || model.ProductId <= 0)
+            {
+                flag[0] = "error";
+                flag[1] = "لطفا موارد ستاره دار را وارد نمایید.";
+                return Json(flag);
+            }
             _Service.FireInsuranceCustomer.Create(new FireInsuranceCustomer
             {
                 BirthDate = model.BirthDate,
@@ -32,7 +40,9 @@ namespace FireInsurance.Web.Controllers
                 ProductId = model.ProductId
             });
             _Service.FireInsuranceCustomer.Save();
-            return View();
+            flag[0] = "success";
+            flag[1] = "درخواست صدور بیمه نامه با موفقیت ثبت شد.";
+            return Json(flag);
         }
     }
 }
