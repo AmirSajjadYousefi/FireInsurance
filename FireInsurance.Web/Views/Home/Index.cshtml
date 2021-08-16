@@ -62,10 +62,10 @@
                     <input autocomplete="off" asp-for="ProductId" class="form-control" placeholder="* کد محصول" />
                 </div>
                 <div style="text-align:right;">
-                    <input type="checkbox" id="privacy">
+                    <input onclick="myFunction()" type="checkbox" id="privacy">
                     <label for="privacy"> شرایط را مطالعه نموده و قبول دارم</label><br>
                 </div>
-                <button class="btn-warning" id="submit" href="/">صدور بیمه نامه</button>
+                <button class="btn-warning" id="submit" href="/">تایید اطلاعات</button>
             </div>
 
         </form>
@@ -86,22 +86,36 @@
     <script>
         $('#submit').click(function (evt) {
             evt.preventDefault();
-            var form = $("#index");
-            var data = new FormData(this.form);
-            $.ajax({
-                url: "/Home/Index",
-                type: "POST",
-                data: data,
-                processData: false,
-                contentType: false,
-                dataType: "json",
-                success: function (msg) {
-                    swal("", msg[1], msg[0]);
+            const cb = document.getElementById('privacy');
+            if (cb.checked) {
+                var data = new FormData(this.form);
+                $.ajax({
+                    url: "/Home/Index",
+                    type: "POST",
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    dataType: "json",
+                    success: function (msg) {
+                        swal("", msg[1], msg[0]);
 
-                }
-            });
+                    }
+                });
+            }
+            else {
+                swal("", "لطفا شرایط را مطاله نمایید.", "error");
+            }
+
         });
 
+    </script>
+    <script>
+        function myFunction() {
+            const cb = document.getElementById('privacy');
+            if (cb.checked) {
+                swal("", "متن شرایط و مقررات.", "warning");
+            }
+        }
     </script>
 </body>
 </html>
